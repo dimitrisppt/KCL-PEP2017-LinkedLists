@@ -22,12 +22,12 @@ public:
         numElem = 0;
     }
 
-    ~LinkedList() {
-    }
+    // ~LinkedList() {
+    // }
 
     void push_front(const T& item) {
 
-        delete newNode;
+        //delete newNode;
         newNode = new Node<T>(item);
 
         if (head == nullptr) {
@@ -54,7 +54,7 @@ public:
 
     void push_back(T item) {
 
-        delete newNode;
+        //delete newNode;
         newNode = new Node<T>(item);
 
         if (tail == nullptr) {
