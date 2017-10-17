@@ -22,8 +22,12 @@ public:
         numElem = 0;
     }
 
+    ~LinkedList() {
+    }
+
     void push_front(const T& item) {
 
+        delete newNode;
         newNode = new Node<T>(item);
 
         if (head == nullptr) {
@@ -31,30 +35,26 @@ public:
           newNode->next = NULL;
           head = newNode;
           tail = newNode;
-          cout << tail <<"\n";
         } else {
           newNode->previous = NULL;
           head->previous = newNode;
           newNode->next = head;
           head = newNode;
-          cout << head <<"\n";
         }
         numElem++;
-
     }
 
 
     T& front() {
-
       if (head != nullptr) {
         return head->data;
-
       }
     }
 
 
     void push_back(T item) {
 
+        delete newNode;
         newNode = new Node<T>(item);
 
         if (tail == nullptr) {
@@ -67,11 +67,8 @@ public:
           tail->next = newNode;
           newNode->previous = tail;
           tail = newNode;
-
         }
         numElem++;
-
-
     }
 
 
@@ -86,27 +83,13 @@ public:
 
 
     NodeIterator<T> begin() const {
-      cout<< "Test begin" <<"\n";
       return NodeIterator<T>(head);
     }
 
 
-     NodeIterator<T> end() const {
-      cout << "Test end" <<"\n";
-
+    NodeIterator<T> end() const {
       return nullptr;
     }
-
-    // ~LinkedList() {
-    //   ListNode* current = head;
-    //   while (current !=0) {
-    //     ListNode* next = current->next;
-    //     delete current;
-    //     current = next;
-    //   }
-    //   head = 0;
-    // }
-
 
 };
 
