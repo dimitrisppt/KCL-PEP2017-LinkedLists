@@ -39,17 +39,16 @@ public:
           head = newNode;
           cout << head <<"\n";
         }
+        numElem++;
 
     }
 
 
-    T front() {
+    T& front() {
 
       if (head != nullptr) {
-        newNode = new Node<T>();
-        newNode->previous = head;
-        newNode->next = head;
-        return newNode;
+        return head->data;
+
       }
     }
 
@@ -64,20 +63,20 @@ public:
           head = newNode;
           tail = newNode;
         } else {
-          newNode->previous = NULL;
-          tail->previous = newNode;
-          newNode->next = tail;
+          newNode->next = NULL;
+          tail->next = newNode;
+          newNode->previous = tail;
           tail = newNode;
 
         }
+        numElem++;
 
 
     }
 
 
-    T back() {
-      //TODO complete function
-      return &tail;
+    T& back() {
+      return tail->data;
     }
 
 
@@ -86,15 +85,16 @@ public:
     }
 
 
-    NodeIterator<T> begin() {
-      cout<< "Test" <<"\n";
+    NodeIterator<T> begin() const {
+      cout<< "Test begin" <<"\n";
       return NodeIterator<T>(head);
     }
 
 
-    NodeIterator<T> end() {
-      cout << "Test1" <<"\n";
-      return NodeIterator<T>(tail);
+     NodeIterator<T> end() const {
+      cout << "Test end" <<"\n";
+
+      return nullptr;
     }
 
     // ~LinkedList() {
