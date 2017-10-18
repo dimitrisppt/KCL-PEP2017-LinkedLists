@@ -29,7 +29,7 @@ public:
         delete head;
         head = tempNode;
       }
-      delete tempNode;
+      // delete tempNode;
       // delete tail;
     }
 
@@ -53,10 +53,8 @@ public:
     }
 
 
-    T& front() {
-      if (head != nullptr) {
+    T & front() {
         return head->data;
-      }
     }
 
 
@@ -80,7 +78,7 @@ public:
     }
 
 
-    T& back() {
+    T & back() {
       return tail->data;
     }
 
