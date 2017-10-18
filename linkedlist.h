@@ -27,7 +27,7 @@ public:
       delete tail;
     }
 
-    void push_front(const T& item) {
+    void push_front(const T & item) {
 
         //delete newNode;
         newNode = new Node<T>(item);
@@ -54,7 +54,7 @@ public:
     }
 
 
-    void push_back(T item) {
+    void push_back(const T & item) {
 
         //delete newNode;
         newNode = new Node<T>(item);
@@ -79,7 +79,7 @@ public:
     }
 
 
-    int size() {
+    int size() const {
       return numElem;
     }
 
