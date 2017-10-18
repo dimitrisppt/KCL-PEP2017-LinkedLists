@@ -22,8 +22,10 @@ public:
         numElem = 0;
     }
 
-    // ~LinkedList() {
-    // }
+    ~LinkedList() {
+      delete head;
+      delete tail;
+    }
 
     void push_front(const T& item) {
 
