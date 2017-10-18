@@ -23,8 +23,14 @@ public:
     }
 
     ~LinkedList() {
-      delete head;
-      delete tail;
+      Node<T>* tempNode = head;
+      while (head != nullptr) {
+        tempNode = head->next;
+        delete head;
+        head = tempNode;
+      }
+      delete tempNode;
+      // delete tail;
     }
 
     void push_front(const T & item) {
