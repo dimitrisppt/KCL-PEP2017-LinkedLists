@@ -11,6 +11,7 @@ private:
     Node<T>* head;
     Node<T>* tail;
     Node<T>* newNode;
+    bool found;
     int numElem;
 
 public:
@@ -28,10 +29,13 @@ public:
         delete head;
         head = tempNode;
       }
+      // delete tempNode;
+      // delete tail;
     }
 
     void push_front(const T & item) {
 
+        //delete newNode;
         newNode = new Node<T>(item);
 
         if (head == nullptr) {
@@ -56,6 +60,7 @@ public:
 
     void push_back(const T & item) {
 
+        //delete newNode;
         newNode = new Node<T>(item);
 
         if (tail == nullptr) {
@@ -93,6 +98,8 @@ public:
     }
 
 };
+
+
 
 // do not edit below this line
 
