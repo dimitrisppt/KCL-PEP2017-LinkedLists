@@ -3,6 +3,9 @@
 
 #include "node.h"
 
+
+
+
 // TODO your code goes here:
 template<typename T>
 class LinkedList {
@@ -13,6 +16,7 @@ private:
     Node<T>* newNode;
     int numElem;
 
+
 public:
 
     LinkedList() {
@@ -21,13 +25,15 @@ public:
         numElem = 0;
     }
 
+
+
     ~LinkedList() {
-      Node<T>* tempNode = head;
-      while (head != nullptr) {
-        tempNode = head->next;
-        delete head;
-        head = tempNode;
+      while (head->next != nullptr) {
+        Node<T>* tempNode = head;
+        head = head->next;
+        delete tempNode;
       }
+      delete head;
     }
 
     void push_front(const T & item) {
