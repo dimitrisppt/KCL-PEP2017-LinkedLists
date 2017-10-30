@@ -102,7 +102,7 @@ public:
 
     // ---------------- Advanced Part
     LinkedList(initializer_list<T> list) {
-    
+
       head = nullptr;
       tail = nullptr;
       numElem = 0;
@@ -119,27 +119,33 @@ public:
       if (head == nullptr) {
         head = new Node<T>(elem);
     		head->data = elem;
-    		head->next = NULL;
+    		head->next = nullptr;
       }else{
     		Node<T>* temp = new Node<T>(elem);
-    		temp->data = elem;
-    		temp->next = head;
-    		head = temp;
+        temp->next = itr.getNodePtr();
+        temp->previous = temp->next->previous;
+        temp->next->previous = temp;
+        temp->previous->next = temp;
+        ++numElem;
+        return NodeIterator<T>(temp);
     	}
       return NodeIterator<T>(head);
     }
 
     NodeIterator<T> erase(NodeIterator<T> itr) {
 
-      Node<T> * erasedNode = itr.getNodePtr()->next;
-      itr.getNodePtr()->next = itr.getNodePtr()->next->next;
+      Node<T>* erasedNode = itr.getNodePtr();
+      ++itr;
       if (erasedNode == tail) {
         tail = itr.getNodePtr();
         delete erasedNode;
         return nullptr;
       }
-      delete erasedNode;
+      erasedNode->next->previous = erasedNode->previous;
+      erasedNode->previous->next = erasedNode->next;
+      --numElem;
       return itr;
+
 
     }
 
