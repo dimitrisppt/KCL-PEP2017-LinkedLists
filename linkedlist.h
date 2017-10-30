@@ -136,11 +136,11 @@ public:
 
       Node<T>* erasedNode = itr.getNodePtr();
       ++itr;
-      if (erasedNode == tail) {
-        tail = itr.getNodePtr();
-        delete erasedNode;
-        return nullptr;
-      }
+      // if (erasedNode == tail) {
+      //   tail = itr.getNodePtr();
+      //   delete erasedNode;
+      //   return nullptr;
+      // }
       erasedNode->next->previous = erasedNode->previous;
       erasedNode->previous->next = erasedNode->next;
       --numElem;
