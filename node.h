@@ -57,6 +57,10 @@ public:
       return current!=itr.current;
     }
 
+    Node<T>* getNodePtr() {
+      return current;
+    }
+
 };
 
 // do not edit below this line
