@@ -2,8 +2,9 @@
 #define LINKEDLIST_H
 
 #include "node.h"
+#include <initializer_list>
 
-
+using std::initializer_list;
 
 
 // TODO your code goes here:
@@ -97,6 +98,51 @@ public:
     NodeIterator<T> end() const {
       return nullptr;
     }
+
+
+    // ---------------- Advanced Part
+    LinkedList(initializer_list<T> list) {
+    
+      head = nullptr;
+      tail = nullptr;
+      numElem = 0;
+
+      for (auto & itemInList: list) {
+        push_back(itemInList);
+      }
+
+    }
+
+
+
+    NodeIterator<T> insert(NodeIterator<T> itr, const T & elem) {
+      if (head == nullptr) {
+        head = new Node<T>(elem);
+    		head->data = elem;
+    		head->next = NULL;
+      }else{
+    		Node<T>* temp = new Node<T>(elem);
+    		temp->data = elem;
+    		temp->next = head;
+    		head = temp;
+    	}
+      return NodeIterator<T>(head);
+    }
+
+    NodeIterator<T> erase(NodeIterator<T> itr) {
+
+      Node<T> * erasedNode = itr.getNodePtr()->next;
+      itr.getNodePtr()->next = itr.getNodePtr()->next->next;
+      if (erasedNode == tail) {
+        tail = itr.getNodePtr();
+        delete erasedNode;
+        return nullptr;
+      }
+      delete erasedNode;
+      return itr;
+
+    }
+
 
 };
 
