@@ -144,6 +144,7 @@ public:
       erasedNode->next->previous = erasedNode->previous;
       erasedNode->previous->next = erasedNode->next;
       --numElem;
+      delete erasedNode;
       return itr;
 
 
